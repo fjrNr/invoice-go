@@ -30,7 +30,7 @@ export default function LoginPage() {
     // }
   }, [
     // searchParams
-    router, supabase])
+    supabase])
 
   const handleLogin = async (e: React.SubmitEvent) => {
     e.preventDefault()
