@@ -2,44 +2,44 @@
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { redirect, useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
-  // const searchParams = useSearchParams()
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
-  const router = useRouter()
-  const supabase = createClient()
+  const [isChecking, setIsChecking] = useState(true)
 
   useEffect(() => {
-    // Check if user is already logged in
-    const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        redirect('/dashboard')
+    let mounted = true
+    
+    const checkAuth = async () => {
+      // Check user tanpa menyimpan reference ke supabase
+      const { data: { user } } = await createClient().auth.getUser()
+      
+      if (mounted && user) {
+        router.replace('/dashboard')
+      } else if (mounted) {
+        setIsChecking(false)
       }
     }
-    checkUser()
+    
+    checkAuth()
+    
+    // Cleanup untuk prevent memory leak
+    return () => { mounted = false }
+  }, [router]) // Hanya router sebagai dependency (stable)
 
-    // Check for error params
-    // const errorParam = searchParams.get('error')
-    // if (errorParam === 'auth_code_error') {
-    //   setError('Terjadi kesalahan saat autentikasi. Silakan coba lagi.')
-    // }
-  }, [
-    // searchParams
-    router, supabase])
-
-  const handleLogin = async (e: React.SubmitEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError('')
     setMessage('')
 
     try {
-      const { error } = await supabase.auth.signInWithOtp({
+      const { error } = await createClient().auth.signInWithOtp({
         email,
         options: {
           emailRedirectTo: `${window.location.origin}/auth/callback`,
@@ -47,13 +47,20 @@ export default function LoginPage() {
       })
 
       if (error) throw error
-
       setMessage('Cek email kamu untuk link login')
     } catch (err: any) {
       setError(err.message || 'Gagal mengirim magic link')
     } finally {
       setLoading(false)
     }
+  }
+
+  if (isChecking) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FFFBF5]">
+        <div className="animate-spin h-8 w-8 border-4 border-[#E85D04] border-t-transparent rounded-full" />
+      </div>
+    )
   }
 
   return (
@@ -79,11 +86,10 @@ export default function LoginPage() {
               id="email"
               name="email"
               type="email"
-              autoComplete="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E85D04] focus:border-transparent font-body text-[#1A1A1A] bg-white transition-all"
+              className="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E85D04] focus:border-transparent font-body text-[#1A1A1A] bg-white"
               placeholder="nama@email.com"
             />
           </div>
@@ -103,18 +109,14 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-[#E85D04] hover:bg-[#d95404] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E85D04] font-heading tracking-tight transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-[#E85D04] hover:bg-[#d95404] font-heading disabled:opacity-50"
           >
             {loading ? 'Mengirim...' : 'Kirim Magic Link'}
           </button>
         </form>
 
-        {/* Back to home */}
         <div className="text-center">
-          <a
-            href="/"
-            className="text-sm font-medium text-[#E85D04] hover:text-[#d95404] font-body transition-colors"
-          >
+          <a href="/" className="text-sm font-medium text-[#E85D04] hover:text-[#d95404] font-body">
             ← Kembali ke halaman utama
           </a>
         </div>

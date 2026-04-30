@@ -128,9 +128,11 @@ export default function Navbar() {
                 Testimoni
               </a>
               <div className="pt-2">
-                <button className="w-full px-6 py-2.5 bg-[#E85D04] hover:bg-[#c94d03] text-white font-heading font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[#E85D04]/20 shadow-lg">
-                  Mulai Gratis
-                </button>
+                <a href="/login">
+                  <button className="w-full px-6 py-2.5 bg-[#E85D04] hover:bg-[#c94d03] text-white font-heading font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[#E85D04]/20 shadow-lg">
+                    Mulai Gratis
+                  </button>
+                </a>
               </div>
             </div>
           </div>
