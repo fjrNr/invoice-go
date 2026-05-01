@@ -99,7 +99,7 @@ export default function InvoiceActions({ invoiceId, currentStatus }: InvoiceActi
           onClick={handleShareLink}
           className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-heading font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-blue-500/20 shadow-lg"
         >
-          Copy Link Publik
+          Share Link Publik
         </button>
 
         <button
