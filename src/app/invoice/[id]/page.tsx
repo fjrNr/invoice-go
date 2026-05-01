@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { notFound } from 'next/navigation'
+import InvoicePrintButton from './InvoicePrintButton'
 
 type InvoiceItem = {
   name: string
@@ -90,7 +91,7 @@ export default async function PublicInvoicePage({
 
   return (
     <>
-      <style jsx global>{`
+      <style>{`
         @media print {
           body {
             background: white !important;
@@ -102,6 +103,7 @@ export default async function PublicInvoicePage({
             box-shadow: none !important;
             margin: 0 !important;
             max-width: 100% !important;
+            border-radius: 0 !important;
           }
         }
       `}</style>
@@ -122,15 +124,7 @@ export default async function PublicInvoicePage({
 
           {/* Print Button - Hidden when printing */}
           <div className="mb-6 no-print">
-            <button
-              onClick={() => window.print()}
-              className="inline-flex items-center px-6 py-3 bg-[#E85D04] hover:bg-[#c94d03] text-white font-heading font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[#E85D04]/20 shadow-lg"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-              </svg>
-              Cetak Invoice
-            </button>
+            <InvoicePrintButton />
           </div>
 
           {/* Invoice Container */}
@@ -157,7 +151,7 @@ export default async function PublicInvoicePage({
             <div className="mb-8">
               {invoice.status === 'paid' ? (
                 <span className="inline-flex px-4 py-2 text-sm font-semibold rounded-full bg-green-100 text-green-700 font-heading">
-                  ✓ Lunas
+                  Lunas
                 </span>
               ) : (
                 <span className="inline-flex px-4 py-2 text-sm font-semibold rounded-full bg-yellow-100 text-yellow-700 font-heading">
@@ -271,15 +265,7 @@ export default async function PublicInvoicePage({
             <div className="flex justify-end mb-8">
               <div className="w-full sm:w-64">
                 <div className="bg-[#E85D04]/5 rounded-lg p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-semibold text-[#1A1A1A]/70 font-heading">
-                      Subtotal
-                    </span>
-                    <span className="text-base font-semibold text-[#1A1A1A] font-heading">
-                      {formatRupiah(total)}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center pt-4 border-t border-[#E85D04]/20">
+                  <div className="flex justify-between items-center ">
                     <span className="text-lg font-bold text-[#1A1A1A] font-heading">
                       Total
                     </span>
@@ -318,15 +304,7 @@ export default async function PublicInvoicePage({
 
           {/* Print Button Bottom - Hidden when printing */}
           <div className="mt-6 text-center no-print">
-            <button
-              onClick={() => window.print()}
-              className="inline-flex items-center px-6 py-3 bg-[#E85D04] hover:bg-[#c94d03] text-white font-heading font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[#E85D04]/20 shadow-lg"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-              </svg>
-              Cetak Invoice
-            </button>
+            <InvoicePrintButton />
           </div>
         </div>
       </div>
