@@ -35,10 +35,11 @@ export default function InvoiceActions({ invoiceId, currentStatus }: InvoiceActi
   }
 
   const handleShareLink = async () => {
-    const url = window.location.href
+    // Use public invoice URL (/invoice/[id] instead of /dashboard/invoices/[id])
+    const publicUrl = window.location.origin + `/invoice/${invoiceId}`
     try {
-      await navigator.clipboard.writeText(url)
-      setMessage('Link berhasil disalin!')
+      await navigator.clipboard.writeText(publicUrl)
+      setMessage('Link publik berhasil disalin!')
     } catch (err) {
       setMessage('Gagal menyalin link')
     }
@@ -98,7 +99,7 @@ export default function InvoiceActions({ invoiceId, currentStatus }: InvoiceActi
           onClick={handleShareLink}
           className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-heading font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-blue-500/20 shadow-lg"
         >
-          Share Link
+          Copy Link Publik
         </button>
 
         <button
