@@ -25,6 +25,7 @@ export default async function DashboardPage() {
   const { data: invoices } = await supabase
     .from('invoices')
     .select('id, invoice_number, client_name, total, status, created_at, due_date')
+    .eq('user_id', user.id)
     .order('created_at', { ascending: false })
 
   const formatRupiah = (amount: number) => {
