@@ -17,7 +17,7 @@ export async function getInvoice(invoiceId: string) {
     .select('*')
     .eq('id', invoiceId)
     .eq('user_id', user.id)
-    .single()
+    .maybeSingle()
 
   if (error) {
     console.error('Error fetching invoice:', error)
@@ -28,7 +28,6 @@ export async function getInvoice(invoiceId: string) {
   }
 
   if (!invoice) {
-    console.error('Invoice tidak ditemukan atau bukan milik user')
     redirect('/dashboard')
   }
 
@@ -48,7 +47,7 @@ export async function toggleInvoiceStatus(invoiceId: string) {
     .select('status')
     .eq('id', invoiceId)
     .eq('user_id', user.id)
-    .single()
+    .maybeSingle()
 
   if (!currentInvoice) {
     return { error: 'Invoice tidak ditemukan' }
@@ -87,6 +86,7 @@ export async function deleteInvoice(invoiceId: string) {
     .eq('user_id', user.id)
 
   if (error) {
+    console.error('Error deleting invoice:', error)
     return { error: 'Gagal menghapus invoice' }
   }
 
