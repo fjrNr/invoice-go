@@ -10,7 +10,7 @@ export default function Footer() {
             Siap Mulai?
           </h2>
           <p className="text-[#1A1A1A]/60 font-body mb-8 max-w-2xl mx-auto text-gray-300">
-            Bergabung dengan ribuan bisnis yang sudah menggunakan InvoiceGo
+            Bergabung dengan ribuan bisnis yang sudah menggunakan InvoiceCepat
           </p>
           <button className="px-8 py-4 bg-[#E85D04] hover:bg-[#c94d03] text-white font-heading font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[#E85D04]/20 shadow-lg text-lg">
             Mulai Gratis Sekarang
@@ -144,11 +144,11 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h3 className="text-2xl font-extrabold font-heading tracking-tight">
-              InvoiceGo
+              InvoiceCepat
             </h3>
           </div>
           <p className="text-gray-400 font-body text-sm">
-            © {currentYear} InvoiceGo. All rights reserved.
+            © {currentYear} InvoiceCepat. All rights reserved.
           </p>
         </div>
       </div>

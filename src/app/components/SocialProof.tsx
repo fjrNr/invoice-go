@@ -26,7 +26,7 @@ export default function SocialProof() {
   const testimonials = [
     {
       quote:
-        "InvoiceGo memudahkan saya mengelola invoice klien. Sangat cepat dan mudah digunakan!",
+        "InvoiceCepat memudahkan saya mengelola invoice klien. Sangat cepat dan mudah digunakan!",
       name: "Budi Santoso",
       role: "Freelancer Web Developer",
       company: "BudiWeb Studio",
@@ -34,7 +34,7 @@ export default function SocialProof() {
     },
     {
       quote:
-        "Sejak menggunakan InvoiceGo, administrasi keuangan bisnis saya jadi lebih rapi dan profesional.",
+        "Sejak menggunakan InvoiceCepat, administrasi keuangan bisnis saya jadi lebih rapi dan profesional.",
       name: "Sari Wijaya",
       role: "Owner",
       company: "Toko Online Sari",
@@ -92,7 +92,7 @@ export default function SocialProof() {
           </h2>
           <p className="text-lg text-[#1A1A1A]/70 font-body max-w-2xl mx-auto">
             Ribuan pengguna telah merasakan kemudahan mengelola invoice dengan
-            InvoiceGo
+            InvoiceCepat
           </p>
         </div>
 

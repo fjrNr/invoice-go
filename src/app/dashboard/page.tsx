@@ -55,7 +55,7 @@ export default async function DashboardPage() {
                 Halo, {user.email}!
               </h1>
               <p className="mt-2 text-[#1A1A1A]/70 font-body">
-                Selamat datang kembali di dashboard InvoiceGo
+                Selamat datang kembali di dashboard InvoiceCepat
               </p>
             </div>
             <LogoutButton />

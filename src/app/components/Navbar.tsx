@@ -27,7 +27,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-xl md:text-2xl font-extrabold text-[#1A1A1A] font-heading tracking-tight">
-              InvoiceGo
+              InvoiceCepat
             </h1>
           </div>
 

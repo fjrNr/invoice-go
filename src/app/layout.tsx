@@ -17,8 +17,8 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "InvoiceGo - Bikin Invoice dalam 30 Detik",
-  description: "Platform invoice yang simpel, cepat, dan profesional untuk bisnis Anda. Buat invoice dalam 30 detik dengan InvoiceGo.",
+  title: "InvoiceCepat - Bikin Invoice dalam 30 Detik",
+  description: "Platform invoice yang simpel, cepat, dan profesional untuk bisnis Anda. Buat invoice dalam 30 detik dengan InvoiceCepat.",
 };
 
 export default function RootLayout({

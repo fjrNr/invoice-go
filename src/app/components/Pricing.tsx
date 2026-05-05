@@ -32,7 +32,7 @@ export default function Pricing() {
       features: [
         "5 Invoice per bulan",
         "Template invoice standar",
-        "Watermark InvoiceGo",
+        "Watermark InvoiceCepat",
       ],
       cta: "Mulai Gratis",
       highlighted: false,

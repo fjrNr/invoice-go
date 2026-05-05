@@ -94,7 +94,7 @@ export default function Features() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] font-heading tracking-tight mb-4">
-            Kenapa InvoiceGo?
+            Kenapa InvoiceCepat?
           </h2>
           <p className="text-lg text-[#1A1A1A]/70 font-body max-w-2xl mx-auto">
             Fitur lengkap untuk mengelola invoice bisnis Anda dengan efisien

@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   if (!invoice) {
     return {
-      title: 'Invoice Tidak Ditemukan - InvoiceGo',
+      title: 'Invoice Tidak Ditemukan - InvoiceCepat',
     }
   }
 
@@ -133,7 +133,7 @@ export default async function PublicInvoicePage({
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 pb-6 border-b-2 border-gray-200">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-[#E85D04] font-heading tracking-tight">
-                  InvoiceGo
+                  InvoiceCepat
                 </h1>
                 <p className="text-sm text-[#1A1A1A]/60 font-body mt-1">
                   Platform Invoice Profesional
@@ -168,7 +168,7 @@ export default async function PublicInvoicePage({
                   Dari
                 </p>
                 <p className="text-base font-semibold text-[#1A1A1A] font-heading">
-                  InvoiceGo
+                  InvoiceCepat
                 </p>
                 <p className="text-sm text-[#1A1A1A]/70 font-body">
                   Platform Invoice Profesional
@@ -293,11 +293,11 @@ export default async function PublicInvoicePage({
             <div className="pt-6 border-t border-gray-200 text-center">
               <p className="text-sm text-[#1A1A1A]/60 font-body">
                 Dibuat dengan{' '}
-                <span className="font-semibold text-[#E85D04]">InvoiceGo</span>
+                <span className="font-semibold text-[#E85D04]">InvoiceCepat</span>
                 {' '}— Platform Invoice Profesional
               </p>
               <p className="text-xs text-[#1A1A1A]/40 font-body mt-2">
-                {new Date().getFullYear()} InvoiceGo. All rights reserved.
+                {new Date().getFullYear()} InvoiceCepat. All rights reserved.
               </p>
             </div>
           </div>
